@@ -30,7 +30,7 @@ def gift_wrap(points):
                 min_angle = test_angle
 
     hull_points.append(first_segment_point)
-
+    #Como a condição de parada é o último ponto ser igual ao primeiro, este ponto ficará repetido na lista resultante
     last_point = dt.Point(math.inf, math.inf)
     while(last_point != min_point):
         #Pegamos os dois últimos pontos adicionados ao fecho para formar o vetor de teste
@@ -41,14 +41,13 @@ def gift_wrap(points):
         max_pseudo_angle = math.inf
 
         for p in points:
-            if dt.orient(first_point, second_point, p) >= 0 :
+            if dt.orient(first_point, second_point, p) >= 0 and p != second_point:
                 test_vector = p - second_point
                 test_angle = current_vector.pseudoangle(test_vector)
                 if max_pseudo_angle > test_angle:
                     max_pseudo_angle = test_angle
                     last_point = p
 
-        print(f'{last_point}')
         hull_points.append(last_point)
-
+    
     return hull_points

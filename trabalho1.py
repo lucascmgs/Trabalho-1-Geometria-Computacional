@@ -1,7 +1,7 @@
 import data_structures as dt
-import numpy as np
-import matplotlib.pyplot as plt
 import convexhull
+import matplotlib.pyplot as plt
+import numpy as np
 import random
 
 def generate_random_values(numero_amostras, espalhamento):
@@ -28,8 +28,8 @@ for line in lines :
 amostras = 400
 espalhamento = 1000
 
-points_x = generate_random_values(amostras, espalhamento)
-points_y = generate_random_values(amostras, espalhamento)
+#points_x = generate_random_values(amostras, espalhamento)
+#points_y = generate_random_values(amostras, espalhamento)
 
 
 stacked_points = np.column_stack((points_x, points_y))
@@ -48,5 +48,5 @@ for p in hull_points:
     
 
 plt.scatter(points_x, points_y, marker='.')
-plt.plot(hull_x, hull_y)
+plt.plot(hull_x, hull_y, color='red')
 plt.show()
